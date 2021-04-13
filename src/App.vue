@@ -2,14 +2,15 @@
   <h1>Sprawdź swój czas reakcji</h1>
   <button @click="start" :disabled="isPlaying">Start</button>
   <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-  <h2 v-if="showResults">Czas reakcji: {{ score }} ms</h2>
+  <Results v-if="showResults" :score="score" />
 </template>
 
 <script>
 import Block from "./components/Block";
+import Results from "./components/Results";
 export default {
   name: "App",
-  components: { Block },
+  components: { Block, Results },
   data() {
     return {
       isPlaying: false,
